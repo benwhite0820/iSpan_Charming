@@ -58,3 +58,5 @@
 ### 圖片上傳功能、動態更新
 
 ![image](https://user-images.githubusercontent.com/97225493/174748471-259f918d-f95a-4851-bcf3-cc480535b466.png)
+
+#### 詳細操作內容請詳閱影片說明 https://youtu.be/DOxdF6H7_KE?t=1447
