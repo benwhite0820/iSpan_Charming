@@ -1,7 +1,23 @@
-# Charming
-## Index
-## About Charming/Collection
-## Tech Applied
-## Features
-## Source
-## Others
+# 資展國際期末專題
+
+## 使用技術
+
+ 前端技術：HTML, CSS, JavaScript, ReactJS
+
+ 後端技術：Node.js, MySQL
+
+ 版本控制：Git, GitHub
+
+## 部落格系統功能介紹
+
+### 基本功能
+
+1. 部落格文章閱讀、作者文章總覽
+
+2. 留言功能、社群網站分享
+
+3. 訂閱文章功能、追蹤作者功能
+
+4. 使用者動態更新、大頭照上傳、封面相片上傳
+
+#### 詳細操作請詳閱影片
