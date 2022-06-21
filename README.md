@@ -20,6 +20,11 @@
 
 4. 使用者動態更新、大頭照上傳、封面相片上傳
 
+### 資料夾位置
+
+1. fronted => src => blog
+2. backend => routes => blog
+
 ## 網站截圖
 
 ### 首頁
@@ -50,7 +55,7 @@
 
 ![image](https://user-images.githubusercontent.com/97225493/174748403-54ae970d-b625-43dd-8146-b10a2b8f8389.png)
 
-7### 圖片上傳功能、動態更新
+### 圖片上傳功能、動態更新
 
 ![image](https://user-images.githubusercontent.com/97225493/174748471-259f918d-f95a-4851-bcf3-cc480535b466.png)
 
