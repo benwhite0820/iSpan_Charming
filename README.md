@@ -22,7 +22,7 @@
 
 ### 資料夾位置
 
-1. fronted => src => blog
+1. frontend => src => blog
 2. backend => routes => blog
 
 ## 網站截圖
@@ -58,9 +58,3 @@
 ### 圖片上傳功能、動態更新
 
 ![image](https://user-images.githubusercontent.com/97225493/174748471-259f918d-f95a-4851-bcf3-cc480535b466.png)
-
-
-
-### 詳細操作請詳閱影片
-
-
