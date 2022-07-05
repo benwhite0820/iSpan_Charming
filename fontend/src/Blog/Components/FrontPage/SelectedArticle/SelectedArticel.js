@@ -12,13 +12,12 @@ const SelectedArticle = (props) => {
   // 紀錄精選文章
   const [categoryArticle, setCategoryArticle] = useState([])
 
-  const fetchSelectedData = async () => {
-    const data = await fetch('http://localhost:3001/blog/renderSearch')
-    const result = await data.json()
-    setCategoryArticle([...result])
-  }
-
   useEffect(() => {
+    const fetchSelectedData = async () => {
+      const data = await fetch('http://localhost:3001/blog/renderSearch')
+      const result = await data.json()
+      setCategoryArticle([...result])
+    }
     fetchSelectedData()
   }, [])
 

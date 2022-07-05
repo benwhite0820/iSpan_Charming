@@ -25,18 +25,17 @@ const AuthorCard = (props) => {
   const [isFollowLoading, setIsFollowLoading] = useState(false)
 
   // 收藏文章
-  const favArticleHandler = () => {
+  const favArticleHandler = async () => {
     setFavArticle(true)
     setIsFavLoading(true)
-    fetch(
+    const response = await fetch(
       `http://localhost:3001/Blog/insert/fav?id=${currentArticle}&userid=${userId}`
     )
-      .then((res) => res.json())
-      .then((data) => {
-        setTimeout(() => {
-          setIsFavLoading(false)
-        }, 200)
-      })
+    await response.json()
+    // 收藏文章的轉圈圈動畫，自動延遲
+    setTimeout(() => {
+      setIsFavLoading(false)
+    }, 200)
   }
 
   // ------------取消收藏文章功能
@@ -50,65 +49,60 @@ const AuthorCard = (props) => {
   }, [isFollowingAuthor])
 
   // 取消收藏
-  const deleteFavArticleHandler = () => {
+  const deleteFavArticleHandler = async () => {
     setFavArticle(false)
     setIsFavLoading(true)
-    fetch(
+    const response = await fetch(
       `http://localhost:3001/Blog/delete/fav?id=${currentArticle}&userid=${userId}`
     )
-      .then((res) => res.json())
-      .then((data) => {
-        setTimeout(() => {
-          setIsFavLoading(false)
-        }, 200)
-      })
+    await response.json()
+    // 取消收藏的轉圈圈小動畫，自動延遲
+    setTimeout(() => {
+      setIsFavLoading(false)
+    }, 200)
   }
 
   // ------------追蹤作者功能
 
   // 訂閱作者
-  const followAuthorHandler = () => {
+  const followAuthorHandler = async () => {
     setIsFollowAuthor(true)
     setIsFollowLoading(true)
-    fetch(
+    const response = await fetch(
       `http://localhost:3001/Blog/follow/author?author=${author_id}&userid=${userId}`
     )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setTimeout(() => {
-          setIsFollowLoading(false)
-        }, 200)
-      })
+    await response.json()
+    // 訂閱作者時的小轉圈圈動畫
+    setTimeout(() => {
+      setIsFollowLoading(false)
+    }, 200)
   }
 
   // ------------取消追蹤作者功能
 
-  const unfollowAuthorHandler = () => {
+  const unfollowAuthorHandler = async () => {
     setIsFollowAuthor(false)
     setIsFollowLoading(true)
-    fetch(
+    const response = await fetch(
       `http://localhost:3001/Blog/unfollow/author?author=${author_id}&userid=${userId}`
     )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setTimeout(() => {
-          setIsFollowLoading(false)
-        }, 200)
-      })
+    await response.json()
+    setTimeout(() => {
+      setIsFollowLoading(false)
+    }, 200)
   }
 
   // 利用回傳回來的json檔判斷是不是有收藏文章，傳回來如果是空陣列代表沒有收藏
 
   useEffect(() => {
-    fetch(
-      `http://localhost:3001/blog/fav/render?userid=${userId}&article=${currentArticle}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length === 0) setFavArticle(false)
-      })
+    const followOrNot = async () => {
+      const response = await fetch(
+        `http://localhost:3001/blog/fav/render?userid=${userId}&article=${currentArticle}`
+      )
+      const result = await response.json()
+      if (result.length === 0) setFavArticle(false)
+    }
+    followOrNot()
   }, [])
 
   return (

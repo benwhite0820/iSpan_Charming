@@ -4,9 +4,8 @@ import { useState, useEffect, useRef } from 'react'
 import MyProductBtn from '../UI/MyProductBtn'
 import TextField from '@mui/material/TextField'
 
-const EditInfo = (props) => {
+const EditInfo = ({ userStatusData, onReRenderStatus, onDisplay }) => {
   // 解構從資料庫拿出來的使用者狀態的title跟context
-  const { userStatusData } = props
 
   const titleUseRef = useRef('')
   const contentUseRef = useRef('')
@@ -47,7 +46,7 @@ const EditInfo = (props) => {
         },
       }
     )
-    const result = await data.json()
+    await data.json()
   }
 
   // 送出表格是要做的動作
@@ -61,9 +60,9 @@ const EditInfo = (props) => {
     // 執行剛剛的api
     updateStatus()
     // 傳給 PersonalInfo ， PersonalInfo 再傳給 InfoDisplay component 讓他 render
-    props.onReRenderStatus(userNewestEdit)
+    onReRenderStatus(userNewestEdit)
     // 告訴 PersonalInfo 使用者已經修改完成
-    props.onDisplay()
+    onDisplay()
   }
 
   return (

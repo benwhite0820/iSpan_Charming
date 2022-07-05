@@ -1,9 +1,8 @@
 import classes from './AuthorHeader.module.css'
 import defaultImage from './blog.png'
-const AuthorHeader = (props) => {
+const AuthorHeader = ({ authorDetail }) => {
   // render 作者的個人頁面 (logo 以及 banner)
 
-  const { authorDetail } = props
   return (
     <div className={classes['author-pic']}>
       <div className={classes['author-banner']}>

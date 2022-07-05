@@ -6,7 +6,6 @@ import {
   TwitterShareButton,
 } from 'react-share'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
 
 const ArticleShare = (props) => {
   const params = useParams()

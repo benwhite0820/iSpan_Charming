@@ -2,10 +2,9 @@ import classes from './ArticleList.module.css'
 import Trending from '../FrontPage/TrendingArticle/Trending'
 import { Link } from 'react-router-dom'
 
-const ArticleList = (props) => {
+const ArticleList = ({ article }) => {
   // 這個 component 是 render 所有精選文章中的小主題的文章
   // 拿所有精選文章中的文章
-  const { article } = props
 
   return (
     <div className={classes['article-list']}>

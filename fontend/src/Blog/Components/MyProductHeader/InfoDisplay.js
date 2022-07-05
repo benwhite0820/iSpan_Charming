@@ -3,10 +3,7 @@ import PillBtn from '../UI/PillBtn'
 import { useState, useEffect } from 'react'
 import MyProductBtn from '../UI/MyProductBtn'
 
-const InfoDisplay = (props) => {
-  // 解構從資料庫拿出來的使用者狀態的title跟context
-  const { userStatusData } = props
-
+const InfoDisplay = ({ userStatusData, onEdit }) => {
   // const [userData, setUserData] = useState(userStatusData)
   // useEffect(() => {
   //   setUserData(userStatusData)
@@ -20,7 +17,7 @@ const InfoDisplay = (props) => {
         <MyProductBtn
           type="button"
           value="修改文案"
-          onClick={props.onEdit}
+          onClick={onEdit}
           className={classes.myproductbtn}
         />
       </div>

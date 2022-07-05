@@ -12,16 +12,15 @@ const BlogSearch = (props) => {
   const keyword = useLocation()
   const search = keyword.search
 
-  const likeSearch = async () => {
-    // 進資料庫利用 query string 做模糊搜尋來找文章
-    const fetchData = await fetch(
-      `http://localhost:3001/blog/keyword/search${search}`
-    )
-    const result = await fetchData.json()
-    setSearchArticle(result)
-  }
-
   useEffect(() => {
+    const likeSearch = async () => {
+      // 進資料庫利用 query string 做模糊搜尋來找文章
+      const fetchData = await fetch(
+        `http://localhost:3001/blog/keyword/search${search}`
+      )
+      const result = await fetchData.json()
+      setSearchArticle(result)
+    }
     likeSearch()
   }, [])
 

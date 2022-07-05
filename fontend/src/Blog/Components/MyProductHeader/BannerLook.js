@@ -59,15 +59,14 @@ const Banner = (props) => {
 
   // ----------------render user 的 banner
 
-  const fetchBanner = async () => {
-    const data = await fetch(
-      `http://localhost:3001/blog/image/render?userid=${userId}`
-    )
-    const result = await data.json()
-    setUserBanner(result[0])
-  }
-
   useEffect(() => {
+    const fetchBanner = async () => {
+      const data = await fetch(
+        `http://localhost:3001/blog/image/render?userid=${userId}`
+      )
+      const result = await data.json()
+      setUserBanner(result[0])
+    }
     fetchBanner()
   }, [])
   return (

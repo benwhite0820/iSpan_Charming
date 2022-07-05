@@ -1,7 +1,6 @@
 import classes from './ArticleContext.module.css'
 import AuthorCard from '../AuthorCard/AuthorCard'
 import ArticleShare from '../ArticleShare/ArticleShare'
-import PillBtn from '../../UI/PillBtn'
 import SearchBar from '../../SearchBar/SearchBar'
 
 const ArticleContext = (props) => {
@@ -37,7 +36,6 @@ const ArticleContext = (props) => {
               />
               <SearchBar className={classes.searchbar} />
             </div>
-            <div classname="haha" type="input" test={isFollowingAuthor}></div>
           </aside>
         </article>
       </div>

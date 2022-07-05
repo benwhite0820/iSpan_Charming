@@ -20,18 +20,20 @@ const TypingArea = (props) => {
 
   // 送出留言時把留言寫到資料庫，並且把剛剛新增的那筆留言丟回ChatArea component，該 component 會把這筆留言丟到 ChatList 做 render
 
-  const chatPostHandler = (e) => {
+  const chatPostHandler = async (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3001/Blog/insert/comment/${currentArticle}`, {
-      method: 'POST',
-      body: JSON.stringify({ userInput }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log('新增成功'))
+    const insertMessage = await fetch(
+      `http://localhost:3001/Blog/insert/comment/${currentArticle}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ userInput }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    await insertMessage.json()
 
     // 紀錄剛剛使用者輸入的留言
     const userTyping = {
@@ -48,16 +50,15 @@ const TypingArea = (props) => {
   // 選擇目前瀏覽網頁的使用者id，要寫進去 userTyping(好丟回上一層)
   const userId = localStorage.getItem('id')
   const [userAccount, setUserAccount] = useState('')
-  const userName = async () => {
-    const data = await fetch(
-      `http://localhost:3001/Blog/userinfo?userid=${userId}`
-    )
-    const result = await data.json()
-
-    setUserAccount(result[0].user_account)
-  }
 
   useEffect(() => {
+    const userName = async () => {
+      const data = await fetch(
+        `http://localhost:3001/Blog/userinfo?userid=${userId}`
+      )
+      const result = await data.json()
+      setUserAccount(result[0].user_account)
+    }
     userName()
   }, [])
 

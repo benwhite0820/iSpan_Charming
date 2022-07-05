@@ -52,31 +52,28 @@ const PersonalInfo = (props) => {
   // ------------ render user logo 邏輯
 
   // 到資料庫撈 user 目前的 logo
-  const fetchLogo = async () => {
-    const data = await fetch(
-      `http://localhost:3001/blog/logo/render?userid=${userId}`
-    )
-    const result = await data.json()
-    setUserLogo(result[0].logo_file)
-  }
-
   useEffect(() => {
+    const fetchLogo = async () => {
+      const data = await fetch(
+        `http://localhost:3001/blog/logo/render?userid=${userId}`
+      )
+      const result = await data.json()
+      setUserLogo(result[0].logo_file)
+    }
     fetchLogo()
   }, [])
 
   // ------------ render user status
 
   // render 使用者內文
-
-  const renderStatus = async () => {
-    const data = await fetch(
-      `http://localhost:3001/blog/user/renderStatus?userid=${userId}`
-    )
-    const result = await data.json()
-    setUserStatus(result)
-  }
-
   useEffect(() => {
+    const renderStatus = async () => {
+      const data = await fetch(
+        `http://localhost:3001/blog/user/renderStatus?userid=${userId}`
+      )
+      const result = await data.json()
+      setUserStatus(result)
+    }
     renderStatus()
   }, [])
 

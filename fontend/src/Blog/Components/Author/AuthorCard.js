@@ -2,10 +2,8 @@ import classes from './AuthorCard.module.css'
 import Trending from '../FrontPage/TrendingArticle/Trending'
 import { Link } from 'react-router-dom'
 
-const AuthorCard = (props) => {
+const AuthorCard = ({ authorData }) => {
   // 拿來 render 使用者所點選的該為作者所寫過的文章
-
-  const { authorData } = props
 
   return (
     <div className={classes['author-card']}>

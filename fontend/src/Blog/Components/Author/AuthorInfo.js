@@ -1,8 +1,7 @@
 import classes from './AuthorInfo.module.css'
 
-const AuthorInfo = (props) => {
+const AuthorInfo = ({ authorDetail }) => {
   // render 作者的名字以及個人狀態
-  const { authorDetail } = props
 
   return (
     <div className={classes['author-info']}>

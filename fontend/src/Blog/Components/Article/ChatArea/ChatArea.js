@@ -16,11 +16,14 @@ const ChatArea = () => {
 
   // 從資料庫撈出這則文章的所有留言，並更新state
   useEffect(() => {
-    fetch(`http://localhost:3001/blog/comment/${currentArticle}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setChatContext([...data])
-      })
+    const messageRender = async () => {
+      const response = await fetch(
+        `http://localhost:3001/blog/comment/${currentArticle}`
+      )
+      const result = await response.json()
+      setChatContext([...result])
+    }
+    messageRender()
   }, [currentArticle])
 
   // 拿 TypingArea 傳上來的訊息再傳給 ChatList

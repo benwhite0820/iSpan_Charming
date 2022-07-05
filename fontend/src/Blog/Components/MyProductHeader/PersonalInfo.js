@@ -5,6 +5,7 @@ import EditInfo from './EditInfo'
 import swal from 'sweetalert'
 import defaultIcon from './favicon.ico'
 import MyProductBtn from '../UI/MyProductBtn'
+
 const PersonalInfo = (props) => {
   // 判斷目前是要 render 修改文案(true)還是顯示文案(false)
   const [changeInfo, setChangeInfo] = useState(false)
@@ -15,8 +16,6 @@ const PersonalInfo = (props) => {
   const [status, setStatus] = useState('')
   const [userLogo, setUserLogo] = useState('')
   // render user status
-  const [editTitle, setEditTitle] = useState('')
-  const [contextTitle, setContextTitle] = useState('')
   const [userStatus, setUserStatus] = useState([])
   // ------------上傳user logo 邏輯
   // 利用 createObjectURL api 來讓使用者預覽圖片
@@ -47,26 +46,26 @@ const PersonalInfo = (props) => {
   }
   // ------------ render user logo 邏輯
   // 到資料庫撈 user 目前的 logo
-  const fetchLogo = async () => {
-    const data = await fetch(
-      `http://localhost:3001/blog/logo/render?userid=${userId}`
-    )
-    const result = await data.json()
-    setUserLogo(result[0].logo_file)
-  }
   useEffect(() => {
+    const fetchLogo = async () => {
+      const data = await fetch(
+        `http://localhost:3001/blog/logo/render?userid=${userId}`
+      )
+      const result = await data.json()
+      setUserLogo(result[0].logo_file)
+    }
     fetchLogo()
   }, [])
   // ------------ render user status
   // render 使用者內文
-  const renderStatus = async () => {
-    const data = await fetch(
-      `http://localhost:3001/blog/user/renderStatus?userid=${userId}`
-    )
-    const result = await data.json()
-    setUserStatus(result)
-  }
   useEffect(() => {
+    const renderStatus = async () => {
+      const data = await fetch(
+        `http://localhost:3001/blog/user/renderStatus?userid=${userId}`
+      )
+      const result = await data.json()
+      setUserStatus(result)
+    }
     renderStatus()
   }, [])
   // 讓畫面變成修改使用者文案
